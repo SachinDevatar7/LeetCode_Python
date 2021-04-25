@@ -4,7 +4,7 @@ class Solution:
         if not matrix or len(matrix) == 0:
             return []
         
-        for r in range(len(matrix)):
+        for r in range(len(matrix[0])):
             for c in range(r, len(matrix)):
                 matrix[c][r], matrix[r][c] = matrix[r][c], matrix[c][r]
                 
