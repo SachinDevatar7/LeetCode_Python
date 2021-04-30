@@ -1,24 +1,25 @@
 # Definition for a binary tree node.
-# class TreeNode(object):
+# class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution(object):
-    def isSymmetric(self, root):
-        """
-        :type root: TreeNode
-        :rtype: bool
-        """
-        if root is None:
+class Solution:      
+    def isSymmetric(self, root: TreeNode) -> bool:
+        if not root:
             return True
-        return self.isMirror(root.left, root.right)
+        
+        return self.helper(root.left, root.right)
     
-    def isMirror(self,left, right):
-        if left == None or right == None:
-            return left == right
-        # elif (left is None and right) or (left and right is None):
-        #     return False
-        # elif left.val != right.val:
-        #     return False
-        return left.val == right.val and self.isMirror(left.left, right.right) and self.isMirror(right.left,  left.right)
+    def helper(self, rootleft, rootright):
+        if rootleft == None or rootright == None:
+            return rootleft == rootright
+        
+        return rootleft.val == rootright.val and self.helper(rootleft.left, rootright.right) and self.helper(rootright.left, rootleft.right) 
+
+        
+        
+
+
+
+    #https://leetcode.com/problems/symmetric-tree/discuss/33052/Recursive-Python-Solution-~~
