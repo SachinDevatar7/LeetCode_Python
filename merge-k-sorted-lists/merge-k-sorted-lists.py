@@ -10,16 +10,16 @@ class Solution(object):
         for i in range(len(lists)):
             if lists[i] != None:
                 heapq.heappush(minHeap, (lists[i].val, i, lists[i].next))
-
+                
         dummyNode = ListNode(-1)
-        curr= dummyNode
+        curr = dummyNode
         
         while len(minHeap) != 0:
             value, index, node = heapq.heappop(minHeap)
-        
+            
             if node != None:
                 heapq.heappush(minHeap, (node.val, index, node.next))
-            
+                
             curr.next = ListNode(value)
             curr = curr.next
             
