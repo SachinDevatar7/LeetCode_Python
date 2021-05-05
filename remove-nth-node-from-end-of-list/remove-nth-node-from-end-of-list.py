@@ -14,14 +14,12 @@ class Solution:
         while count <= n:
             fast = fast.next
             count += 1
-        #print(fast.val)
             
         while fast != None:
             fast = fast.next
             slow = slow.next
-        
+            
         slow.next = slow.next.next
         
-        return dummyNode.next 
-            
+        return dummyNode.next
         
