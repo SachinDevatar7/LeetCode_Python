@@ -1,5 +1,5 @@
-class Solution:
-    def checkPossibility(self, nums: List[int]) -> bool:
+class Solution(object):
+    def checkPossibility(self, nums):
         numViolation = 0
         
         for i in range(1, len(nums)):
@@ -16,5 +16,5 @@ class Solution:
                     nums[i] = nums[i-1]
                     
         return True
-                
+    
         
