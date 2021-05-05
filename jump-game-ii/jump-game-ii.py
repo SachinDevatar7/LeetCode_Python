@@ -9,6 +9,7 @@ class Solution:
             
             if pos == i:
                 pos = maxdest
+                print(pos)
                 jump += 1
                 
         return jump
