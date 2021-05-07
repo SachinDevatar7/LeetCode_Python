@@ -1,26 +1,33 @@
-class Solution(object):
-    def search(self, nums, target):
-        if not nums or len(nums) == 0:
-            return -1
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        # if nums none will return -1
+        if nums == None:
+            return - 1
         
-        low = 0
-        high = len(nums) - 1
+        # Perform Binary search
+        left = 0
+        right = len(nums) - 1
         
-        while low <= high:
-            mid = low +(high - low) // 2
+        while left <= right:
+            mid = (left + right) // 2
             
-            if nums[mid] == target:
+            # if target find then return mid position index
+            if target == nums[mid]:
                 return mid
             
-            if nums[low] <= nums[mid]:
-                if nums[low] <= target <= nums[mid]:
-                    high = mid - 1
+            # when nums is rotated we need these two condition to check
+            if nums[left] <= nums[mid]:
+                if nums[left] <= target <= nums[mid]:
+                    right = mid - 1
                 else:
-                    low = mid + 1
+                    left = mid + 1
+            
             else:
-                if nums[high] >= target >= nums[mid]:
-                    low = mid + 1
+                if nums[right] >= target >= nums[mid]:
+                    left = mid + 1
                 else:
-                    high = mid - 1
+                    right = mid - 1
         return -1
-                    
+        
+            
+            
