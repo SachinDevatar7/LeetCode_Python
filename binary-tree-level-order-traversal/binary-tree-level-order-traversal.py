@@ -4,6 +4,10 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+# Why temp? 
+# The value should be in list of list as we go so we are taking a help of temp to store each level and finally put that in result as list(temp)
+
 class Solution:
     def levelOrder(self, root: TreeNode) -> List[List[int]]:
         #Time and space is O(N)
@@ -17,8 +21,8 @@ class Solution:
         temp.append(root.val)
         
         while queue:
-            result.append(list(temp))
             queue_len = len(queue)
+            result.append(list(temp))
             for i in range(queue_len):
                 node = queue.popleft()
                 # Missed temp.pop()
@@ -27,10 +31,13 @@ class Solution:
                 if node.left != None:
                     queue.append(node.left)
                     temp.append(node.left.val)
+                    # result.append(list(node.left.val)) int object is not iteratable 
+                  
                     
                 if node.right != None:
                     queue.append(node.right)
                     temp.append(node.right.val)
+                    #result.append(list(node.right.val))
             
         return result
                     
