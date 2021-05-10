@@ -15,7 +15,7 @@ class Solution:
         if rootleft == None or rootright == None:
             return rootleft == rootright
         
-        return rootleft.val == rootright.val and self.helper(rootleft.left, rootright.right) and self.helper(rootright.left, rootleft.right) 
+        return rootleft.val == rootright.val and self.helper(rootleft.left, rootright.right) and self.helper( rootleft.right, rootright.left) 
 
         
         
