@@ -1,34 +1,40 @@
-class Solution:
-    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
-        # if not prerequisites or len(prerequisites) == 0:
-        #     return []
+class Solution(object):
+    def findOrder(self, numCourses, prerequisites):
+        """
+        :type numCourses: int
+        :type prerequisites: List[List[int]]
+        :rtype: List[int]
+        """
         
-        indegree = [0] * numCourses
+        queue = []
         result = []
-        queue = deque()
         dic = collections.defaultdict(list)
+        degree = [0] * numCourses
         
-        for course, prereq in prerequisites:
-            dic[prereq].append(course)
-            indegree[course] += 1
-            
-        for i in range(len(indegree)):
-            if indegree[i] == 0:
+        for course,precourse in prerequisites:
+            dic[precourse].append(course)
+            degree[course] += 1
+        # print(dic)
+        # print(degree)
+        
+        for i in range(len(degree)):
+            if degree[i] == 0:
                 queue.append(i)
-                
+        
         while queue:
-            curr_course = queue.popleft()
-            result.append(curr_course)
+            courseNumber = queue.pop(0)
+            result.append(courseNumber)
             
-            edge = dic[curr_course]
+            dicvalue= dic[courseNumber]
             
-            for newcourse in edge:
-                indegree[newcourse] -= 1
+            for nextcourse in dicvalue:
+                degree[nextcourse] -= 1
                 
-                if indegree[newcourse] == 0:
-                    queue.append(newcourse)
+                if degree[nextcourse] == 0:
+                    queue.append(nextcourse)
                     
         if len(result) == numCourses:
             return result
         else:
             return []
+        
