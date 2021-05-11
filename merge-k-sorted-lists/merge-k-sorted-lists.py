@@ -1,16 +1,15 @@
 # Definition for singly-linked list.
-# class ListNode(object):
+# class ListNode:
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
-class Solution(object):
-    def mergeKLists(self, lists):
+class Solution:
+    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
         minHeap = []
-        
         for i in range(len(lists)):
             if lists[i] != None:
                 heapq.heappush(minHeap, (lists[i].val, i, lists[i].next))
-                
+        
         dummyNode = ListNode(-1)
         curr = dummyNode
         
@@ -24,4 +23,6 @@ class Solution(object):
             curr = curr.next
             
         return dummyNode.next
+        
+        
         
