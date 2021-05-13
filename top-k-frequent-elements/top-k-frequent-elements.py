@@ -14,6 +14,7 @@ class Solution:
                 
         for key, value in dic.items():
             heapq.heappush(maxHeap,(-value, key))
+        print(maxHeap)
             
         while k != 0:
             result.append(heapq.heappop(maxHeap)[1])
