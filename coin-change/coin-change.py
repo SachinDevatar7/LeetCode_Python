@@ -11,7 +11,7 @@ class Solution:
         dp[0] = 0
         
         for coin in coins:
-            for i in range(coin, amount + 1):
+            for i in range(coin, amount + 1): # start with coin previous coin
                 dp[i] = min(dp[i-coin] + 1, dp[i])
             
         if dp[amount] == float('inf'):
