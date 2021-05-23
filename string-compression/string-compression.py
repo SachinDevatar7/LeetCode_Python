@@ -14,6 +14,9 @@ class Solution(object):
             if chars[j] == chars[j+1]:
                 count += 1
             else:
+                # Important to handle ["a","a","a","b","b","a","a"] 
+                # or else the output ["a","2","a","2","b","2"] which is incorrect
+                # replacing j with i
                 chars[i] = chars[j]
                 i += 1
                 if count > 1:
