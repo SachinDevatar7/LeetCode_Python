@@ -9,6 +9,7 @@ class Solution(object):
         
         if not root:
             return None
+        
         queue = deque()
         queue.append(root)
         temp = []
