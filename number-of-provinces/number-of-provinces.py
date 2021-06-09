@@ -2,24 +2,20 @@ class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
         if not isConnected:
             return 0
-        
-        count_province = 0
-    
-        for i in range(len(isConnected)):
-            for j in range(len(isConnected)):
-                # print(i, j)
-                if isConnected[i][j] == 1:
-                    count_province += 1
-                    self.dfs(isConnected, i)
-        return count_province
-    
-    
-    def dfs(self, isConnected, i):
-        # see inside a single list
-        for j in range(len(isConnected)):
-            if isConnected[i][j] == 1:
-                isConnected[i][j] = "X"
-                self.dfs(isConnected, j)
+
+        visited = set()
+        counter, n = 0, len(isConnected)
+        for i in range(n):
+            if i not in visited:
+                self.dfs(isConnected, i, visited)
+                counter += 1
+        return counter
+
+    def dfs(self, isConnected, i, visited):
+        visited.add(i)
+        for idx, val in enumerate(isConnected[i]):
+            if val == 1 and idx not in visited:
+                self.dfs(isConnected, idx, visited)
                 
         
         
