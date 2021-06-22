@@ -4,7 +4,7 @@ class Solution(object):
         x = 0
         y = 0
         d = 0
-        
+        # Anticlock wise rotation.
         for i in instructions:
             if i == "L": 
                 d = (d+1) % 4
