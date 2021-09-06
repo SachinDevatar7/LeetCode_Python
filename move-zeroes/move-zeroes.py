@@ -4,9 +4,12 @@ class Solution(object):
         :type nums: List[int]
         :rtype: None Do not return anything, modify nums in-place instead.
         """
-        if not nums or len(nums) == 0:
-            return num
+        #base case
         
+        if not nums or len(nums) == 0:
+            return nums
+        
+        # Two pointer Approach
         left = 0
         right = 0
         
@@ -15,8 +18,6 @@ class Solution(object):
                 left += 1
             else:
                 nums[left], nums[right] = nums[right], nums[left]
-                left +=1 
+                left += 1
                 right += 1
-            
         return nums
-        
