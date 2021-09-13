@@ -1,11 +1,10 @@
-class Solution(object):
-    def sortColors(self, nums):
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
         """
-        :type nums: List[int]
-        :rtype: None Do not return anything, modify nums in-place instead.
+        Do not return anything, modify nums in-place instead.
         """
         if not nums or len(nums) == 0:
-            return []
+            return nums
         
         p0 = 0
         p2 = len(nums) - 1
@@ -13,14 +12,17 @@ class Solution(object):
         
         while curr <= p2:
             if nums[curr] == 0:
-                nums[p0], nums[curr] = nums[curr], nums[p0]
+                nums[curr], nums[p0] = nums[p0], nums[curr]
                 p0 += 1
                 curr += 1
             elif nums[curr] == 2:
-                nums[p2], nums[curr] = nums[curr], nums[p2]
+                nums[curr], nums[p2] = nums[p2], nums[curr]
                 p2 -= 1
             else:
                 curr += 1
                 
-        return nums
+                
+        
+            
+        
         
