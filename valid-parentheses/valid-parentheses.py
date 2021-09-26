@@ -1,8 +1,6 @@
-# Stack [LIFO] so why we are using is in order to process it as a pair we are using stack! with usage of stack you can keep track of each VALID Pair!
-
-class Solution(object):
-    def isValid(self, s):
-        if not s or len(s) % 2 != 0:
+class Solution:
+    def isValid(self, s: str) -> bool:
+        if not s or len(s) % 2 != 0: # Odd Case so return False
             return False
         
         stack = []
@@ -10,10 +8,10 @@ class Solution(object):
         for i in s:
             if i == '(':
                 stack.append(')')
-            elif i == '[':
-                stack.append(']')
             elif i == '{':
                 stack.append('}')
+            elif i == '[':
+                stack.append(']')
             elif not stack or i != stack.pop():
                 return False
             
@@ -21,8 +19,4 @@ class Solution(object):
             return True
         else:
             return False
-            
-            
-        
-        
         
